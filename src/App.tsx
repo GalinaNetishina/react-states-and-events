@@ -1,9 +1,9 @@
 import './App.css'
-import Portfolio from './components/Portfolio';
+import Store from './components/Store';
 
 
 export default function App() {
   return (
-    <Portfolio />
+    <Store/>   
   )
 }

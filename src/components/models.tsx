@@ -1,16 +1,15 @@
-export type TProject = {
+export type TProduct = {
+    key:string
+    name: string,
+    price: number;
     img: string,
-    category: string      
+    color: string      
   }
 
-export type TProjectList = {    
-    img: string,
-    category: string
-    }[]
+export type TProductList = TProduct[]
   
 
-export type TToolbar = {
-    filters: string[],
-    selected: string,
-    onSelectFilter: (filter: string) => void
-  }
+export type TIconSwitch = {
+    icon: string,
+    onSwitch: () => void
+}
