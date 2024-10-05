@@ -4,10 +4,18 @@ import style from './dropdown.module.css'
 type TDropItem = {
     item: string
     isActive: boolean
-    onActive():void
+    onActive: () => void
 }
 
-function DropSwitch({onSwitch}) {
+type TDropItemList = {
+    menu: string[]
+}
+
+type TDropSwith ={
+  onSwitch: () => void
+}
+
+function DropSwitch({onSwitch}:TDropSwith) {
     return (
         <button className={style["btn"]} onClick={onSwitch}>
         <span>Account Settings</span>
@@ -27,26 +35,23 @@ function DropItem({item, isActive, onActive}: TDropItem) {
 }
 
 
-export default function Dropdown({menu}: TDropItem[]) {
+export default function Dropdown({menu}: TDropItemList) {
     const [show, setItems] = useState<boolean>(false);
     const [active, setActive] = useState<string>('Log Out')
     const handleDrop = () => {
         setItems(() => !show)
         }
-    const handleActive = (e) =>{
+    const handleActive = (e: Event) =>{
         setActive((prev) => e.currentTarget? e.currentTarget.innerText : prev)
     }
         
-
-    
-  
   return (<>
   <div className={style["container"]}>
   <DropSwitch onSwitch={handleDrop}/>
   {show && 
     <div className={style["dropdown-wrapper open"]}>
       <ul className={style["dropdown"]}>
-        {menu.map((item)=>
+        {menu.map((item: string)=>
         <DropItem key={item} item={item} isActive={item==active} onActive={handleActive}/>
         )}
       </ul>
