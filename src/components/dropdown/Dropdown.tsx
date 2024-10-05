@@ -42,7 +42,12 @@ export default function Dropdown({menu}: TDropItemList) {
         setItems(() => !show)
         }
     const handleActive = (e: Event) =>{
-        setActive((prev) => e.currentTarget? e.currentTarget.innerText : prev)
+        const li: HTMLLIElement = e.currentTarget
+        if (li) {
+          setActive(() => li.innerText)
+          li.classList.toggle(style["active-li"])
+        }
+        
     }
         
   return (<>
